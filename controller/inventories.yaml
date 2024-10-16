@@ -1,0 +1,122 @@
+---
+controller_inventories:
+  - name: "Demo Inventory"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Controllers"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Aruba"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "AWS"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "CentOS"
+    description: "CentOS Nodes (outside EVE-NG)"
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Cisco ACI"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Cisco DNAC"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Cisco Meraki"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Controller"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Cisco/Juniper"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Netbox"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "EVE Firewalls"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "EVE-NG BigIP F5"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+    variables:
+      ansible_ssh_pass: Cisco123
+      ansible_user: admin
+      net_netbox_url: https://172.16.1.60
+      update_log_hidden: false
+  - name: "EVE-NG Network Basic"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+    variables:
+      ansible_ssh_pass: Cisco123
+      ansible_user: admin
+      net_netbox_url: https://172.16.1.16
+      update_log_hidden: false
+  - name: "Fortinet"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Netbox Plugin"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "ServiceNow-ITSM"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Azure"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Orange-Juniper"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Databases"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "VMWare"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False
+  - name: "Active-Directory"
+    description: ""
+    organization: "Default"
+    host_filter: ""
+    prevent_instance_group_fallback: False

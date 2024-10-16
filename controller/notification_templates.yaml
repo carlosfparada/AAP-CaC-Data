@@ -1,0 +1,23 @@
+---
+controller_notifications:
+  - name: "E-mail notification"
+    organization: "Default"
+    notification_type: "email"
+    notification_configuration:
+      host: "smtp.sapo.pt"
+      port: 465
+      sender: "carlosparada@sapo.pt"
+      timeout: 5
+      use_ssl: true
+      use_tls: false
+      password: ""
+      username: "carlosparada@sapo.pt"
+      recipients: ['cparada@redhat.com', 'aaaaf7whucf7b4yseb2zmrlaaa@telenorautomation.slack.com']
+  - name: "Slack notification"
+    organization: "Default"
+    notification_type: "slack"
+    notification_configuration:
+      token: ""
+      channels: ['#aap-notifs-test']
+      hex_color: ""
+...

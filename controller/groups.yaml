@@ -1,0 +1,129 @@
+---
+controller_groups:
+  - name: "aoscx"
+    description: ""
+    inventory: "Aruba"
+    hosts:
+      - aoscx-1
+  - name: "webserver"
+    description: ""
+    inventory: "CentOS"
+    hosts:
+      - webserver-1
+      - webserver-2
+  - name: "controller"
+    description: ""
+    inventory: "Controller"
+    hosts:
+      - controller-1
+  - name: "cisco"
+    description: ""
+    inventory: "Cisco/Juniper"
+    hosts:
+      - ios-rt1
+      - ios-rt2
+      - ios-sw1
+  - name: "cisco_rtr"
+    description: ""
+    inventory: "Cisco/Juniper"
+    hosts:
+      - ios-rt1
+      - ios-rt2
+  - name: "cisco_sw"
+    description: ""
+    inventory: "Cisco/Juniper"
+    hosts:
+      - ios-sw1
+  - name: "juniper"
+    description: ""
+    inventory: "Cisco/Juniper"
+    hosts:
+      - junos-1
+  - name: "juniper_rtr"
+    description: ""
+    inventory: "Cisco/Juniper"
+    hosts:
+      - junos-1
+  - name: "eos"
+    description: ""
+    inventory: "Netbox"
+    variables:
+      ansible_connection: network_cli
+      ansible_network_os: eos
+    hosts:
+      - eos-rt1
+  - name: "ios"
+    description: ""
+    inventory: "Netbox"
+    variables:
+      ansible_connection: network_cli
+      ansible_network_os: ios
+    hosts:
+      - ios-rt1
+      - ios-rt2
+      - ios-sw1
+  - name: "nxos"
+    description: ""
+    inventory: "Netbox"
+    variables:
+      ansible_connection: network_cli
+      ansible_network_os: nxos
+    hosts:
+      - nxos-9k
+  - name: "asa"
+    description: ""
+    inventory: "EVE Firewalls"
+    hosts:
+      - asa-1
+  - name: "checkpoint"
+    description: ""
+    inventory: "EVE Firewalls"
+    hosts:
+      - checkpoint-1
+  - name: "fortinet"
+    description: ""
+    inventory: "EVE Firewalls"
+    hosts:
+      - fortinet-1
+  - name: "panos"
+    description: ""
+    inventory: "EVE Firewalls"
+    hosts:
+      - vpanos-1
+  - name: "srx"
+    description: ""
+    inventory: "EVE Firewalls"
+    hosts:
+      - vsrx-1
+  - name: "controller"
+    description: ""
+    inventory: "Fortinet"
+    hosts:
+      - controller-1
+  - name: "fortianalyzer"
+    description: ""
+    inventory: "Fortinet"
+    hosts:
+      - fortianalyzer-1
+  - name: "fortigate"
+    description: ""
+    inventory: "Fortinet"
+    hosts:
+      - fortigate-1
+  - name: "fortimanager"
+    description: ""
+    inventory: "Fortinet"
+    hosts:
+      - fortimanager-1
+  - name: "controller"
+    description: ""
+    inventory: "ServiceNow-ITSM"
+    hosts:
+      - controller-1
+  - name: "linux"
+    description: ""
+    inventory: "ServiceNow-ITSM"
+    hosts:
+      - webserver-1
+      - webserver-2
+...

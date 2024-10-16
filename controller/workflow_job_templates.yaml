@@ -1,0 +1,474 @@
+---
+controller_workflows:
+  - name: "Demo Netbox: WORKFLOW"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "df62c7f5-0091-4daf-90e9-cc981d4f0901"
+        workflow_job_template: "Demo Netbox: WORKFLOW"
+        unified_job_template: "Demo Netbox: 0. CLEANUP NETBOX"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - b556b9d6-ecf3-4e22-a7a3-1af83689a7e0
+      - identifier: "dd50a935-c8ab-404e-9d02-dbe744624978"
+        workflow_job_template: "Demo Netbox: WORKFLOW"
+        unified_job_template: "Demo Netbox: 2. QUERY NETBOX"
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "b556b9d6-ecf3-4e22-a7a3-1af83689a7e0"
+        workflow_job_template: "Demo Netbox: WORKFLOW"
+        unified_job_template: "Demo Netbox: 1. GET FACTS, PUSH NETBOX"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - dd50a935-c8ab-404e-9d02-dbe744624978
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "Fortinet: workflow fortigate/analyzer/manager"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "FortiGate Configs"
+        workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
+        unified_job_template: "Fortinet: 2. fortigate"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - FortiAnalyzer Configs
+      - identifier: "FortiManager Configs"
+        workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
+        unified_job_template: "Fortinet: 4. fortimanager"
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "FortiAnalyzer Configs"
+        workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
+        unified_job_template: "Fortinet: 3. fortianalyzer"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - FortiManager Configs
+      - identifier: "AWS Deployment"
+        workflow_job_template: "Fortinet: workflow fortigate/analyzer/manager"
+        unified_job_template: "Fortinet: 1.b aws"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - FortiGate Configs
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    notification_templates_error:
+      - "E-mail notification"
+    survey_enabled: False
+  - name: "ServiceNow-ITSM: 0. workflow"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "7fd2528e-c83f-4e3e-bed8-f7c176bf3d90"
+        workflow_job_template: "ServiceNow-ITSM: 0. workflow"
+        unified_job_template: "ServiceNow-ITSM: 1. create incident"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - dcaa5887-319a-43f8-a1e2-39b7b51dbb18
+      - identifier: "b1f16046-a0e0-4ec3-a3e8-656089c04dd1"
+        workflow_job_template: "ServiceNow-ITSM: 0. workflow"
+        unified_job_template: "ServiceNow-ITSM: 3. attach change"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - 9decfca5-ad38-4e23-b04b-167fbcfba713
+      - identifier: "dcaa5887-319a-43f8-a1e2-39b7b51dbb18"
+        workflow_job_template: "ServiceNow-ITSM: 0. workflow"
+        unified_job_template: "ServiceNow-ITSM: 2. attach problem"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - b1f16046-a0e0-4ec3-a3e8-656089c04dd1
+      - identifier: "9decfca5-ad38-4e23-b04b-167fbcfba713"
+        workflow_job_template: "ServiceNow-ITSM: 0. workflow"
+        unified_job_template: "ServiceNow-ITSM: 4. create config"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - 24eb9c63-1778-4fb6-bb00-a476d6f6b5de
+      - identifier: "24eb9c63-1778-4fb6-bb00-a476d6f6b5de"
+        workflow_job_template: "ServiceNow-ITSM: 0. workflow"
+        unified_job_template: "ServiceNow-ITSM: 6. close records"
+        organization: "Default"
+        all_parents_must_converge: "False"
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "Workflows: workflow inner"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "0abad7a9-c785-4569-b6b5-388a8ab523ce"
+        workflow_job_template: "Workflows: workflow inner"
+        unified_job_template: "Workflows: Job1"
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "8701036f-039f-483d-8997-20d63a60caaf"
+        workflow_job_template: "Workflows: workflow inner"
+        unified_job_template: "Workflows: Job1"
+        organization: "Default"
+        all_parents_must_converge: "False"
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "Workflows: workflow nested"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "805ee296-273a-4c27-b0be-d887155f70a1"
+        workflow_job_template: "Workflows: workflow nested"
+        unified_job_template: "Workflows: Job2"
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "e57ab6b2-a82f-4752-bc28-043d6a6f3d60"
+        workflow_job_template: "Workflows: workflow nested"
+        unified_job_template: "Workflows: workflow inner"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - 805ee296-273a-4c27-b0be-d887155f70a1
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "Workflows: workflow slicing"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "3e20c092-955f-45a1-8eaf-4045566e5a19"
+        workflow_job_template: "Workflows: workflow slicing"
+        unified_job_template: "Workflows: Job2"
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "0abad7a9-c785-4569-b6b5-388a8ab523ce"
+        workflow_job_template: "Workflows: workflow slicing"
+        unified_job_template: "Workflows: Job1"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - 3e20c092-955f-45a1-8eaf-4045566e5a19
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "BigIP F5: 6-pool report workflow"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "74f10ee8-6eab-4bcb-b78a-a49775d1a5a8"
+        workflow_job_template: "BigIP F5: 6-pool report workflow"
+        unified_job_template: "BigIP F5: 6.1-pool report read"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - 398f2ea5-2e5a-4686-9e62-ecba90b4f265
+      - identifier: "398f2ea5-2e5a-4686-9e62-ecba90b4f265"
+        workflow_job_template: "BigIP F5: 6-pool report workflow"
+        unified_job_template: "BigIP F5: 6.2-pool report write"
+        organization: "Default"
+        all_parents_must_converge: "False"
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "Fortinet: workflow fortigate"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "FortiGate Configs"
+        workflow_job_template: "Fortinet: workflow fortigate"
+        unified_job_template: "Fortinet: 2. fortigate"
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "AWS Deployment"
+        workflow_job_template: "Fortinet: workflow fortigate"
+        unified_job_template: "Fortinet: 1.b aws"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - FortiGate Configs
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "VMWare: workflow"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "d958ebbd-8d52-4a64-93b7-3d7bf5a65676"
+        workflow_job_template: "VMWare: workflow"
+        unified_job_template: "VMWare: RHEL Undeployment"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - d3f9a79c-3edc-44d6-8fb9-caaf2106a64e
+      - identifier: "a7a2e331-b291-4ac1-bca1-a5debc35eb2f"
+        workflow_job_template: "VMWare: workflow"
+        unified_job_template: "VMWare: RHEL Undeployment"
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "d3f9a79c-3edc-44d6-8fb9-caaf2106a64e"
+        workflow_job_template: "VMWare: workflow"
+        unified_job_template: "VMWare: RHEL Deployment"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - 37725897-87d5-49b1-ab36-913a3ca42de9
+      - identifier: "37725897-87d5-49b1-ab36-913a3ca42de9"
+        workflow_job_template: "VMWare: workflow"
+        unified_job_template: "VMWare: RHEL Config"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - a7a2e331-b291-4ac1-bca1-a5debc35eb2f
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "AWS: RHEL workflow"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "6d8facbc-da48-4235-95c2-66db9e8b8418"
+        workflow_job_template: "AWS: RHEL workflow"
+        unified_job_template: "AWS: RHEL Config"
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "16f37aed-6e67-48b1-9826-9368b1a1a052"
+        workflow_job_template: "AWS: RHEL workflow"
+        unified_job_template: "AWS: RHEL Deployment"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - 6d8facbc-da48-4235-95c2-66db9e8b8418
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "Workflow Approval"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "d549309b-9e41-470c-9a9e-19558d57858d"
+        workflow_job_template: "Workflow Approval"
+        unified_job_template: "Network Basic: 1-parse facts"
+        organization: "Default"
+        all_parents_must_converge: "False"
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "NXOS Upgrade: workflow"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "66313361-3d1c-4279-829a-64478cc9c347"
+        workflow_job_template: "NXOS Upgrade: workflow"
+        unified_job_template: "NXOS Upgrade: fallback"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - c36a30e8-a253-4b67-b3d6-912852689bcf
+      - identifier: "d1c91988-97ec-427b-93ac-1a9722765707"
+        workflow_job_template: "NXOS Upgrade: workflow"
+        unified_job_template: "NXOS Upgrade: imagedownload"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - 197372b7-0965-4257-9172-890ff615f651
+      - identifier: "417877d9-73ef-4046-891c-22c1cc577981"
+        workflow_job_template: "NXOS Upgrade: workflow"
+        unified_job_template: "NXOS Upgrade: upgrade"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - c5157041-54ad-470f-9172-2a7bd5483eb0
+        failure_nodes:
+          - 66313361-3d1c-4279-829a-64478cc9c347
+      - identifier: "c36a30e8-a253-4b67-b3d6-912852689bcf"
+        workflow_job_template: "NXOS Upgrade: workflow"
+        unified_job_template: "NXOS Upgrade: upgrade"
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "197372b7-0965-4257-9172-890ff615f651"
+        workflow_job_template: "NXOS Upgrade: workflow"
+        unified_job_template: "Cisco-Backup-Restore: backup"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - 417877d9-73ef-4046-891c-22c1cc577981
+      - identifier: "1962c1c2-a55a-4f14-bc06-3813ea7ddcaa"
+        workflow_job_template: "NXOS Upgrade: workflow"
+        unified_job_template: "NXOS Upgrade: fallback"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - 8b32892c-ee49-4a70-a741-0be43aab7a72
+      - identifier: "388502f0-c9ea-4605-87b8-3cf6d2c59441"
+        workflow_job_template: "NXOS Upgrade: workflow"
+        unified_job_template: "NXOS Upgrade: prechecks"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - d1c91988-97ec-427b-93ac-1a9722765707
+      - identifier: "c5157041-54ad-470f-9172-2a7bd5483eb0"
+        workflow_job_template: "NXOS Upgrade: workflow"
+        unified_job_template: "NXOS Upgrade: smoketests"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        failure_nodes:
+          - 1962c1c2-a55a-4f14-bc06-3813ea7ddcaa
+      - identifier: "8b32892c-ee49-4a70-a741-0be43aab7a72"
+        workflow_job_template: "NXOS Upgrade: workflow"
+        unified_job_template: "NXOS Upgrade: upgrade"
+        organization: "Default"
+        all_parents_must_converge: "False"
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "Cisco ACI: Workflow"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "7772b8f1-e7fe-4872-bf94-e499b3c7b574"
+        workflow_job_template: "Cisco ACI: Workflow"
+        unified_job_template: "Cisco ACI: 2-vrf"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        extra_data:
+          aci_vrf_state: present
+        success_nodes:
+          - 34c9251d-bf06-454c-8c4d-3ffde10af6a6
+      - identifier: "d0ab8bc7-4380-4924-b275-4ebf9c521954"
+        workflow_job_template: "Cisco ACI: Workflow"
+        unified_job_template: "Cisco ACI: 1-tenant + ap"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        extra_data:
+          aci_tenant_state: present
+        success_nodes:
+          - 7772b8f1-e7fe-4872-bf94-e499b3c7b574
+      - identifier: "34c9251d-bf06-454c-8c4d-3ffde10af6a6"
+        workflow_job_template: "Cisco ACI: Workflow"
+        unified_job_template: "Cisco ACI: 3-bd + subnet"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        extra_data:
+          aci_bd_state: present
+        success_nodes:
+          - 0ff3064a-22a9-4d64-8f25-249695789db2
+      - identifier: "0ff3064a-22a9-4d64-8f25-249695789db2"
+        workflow_job_template: "Cisco ACI: Workflow"
+        unified_job_template: "Cisco ACI: 4-epg + contract"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        extra_data:
+          aci_epg_state: present
+        always_nodes:
+          - 514bf53a-f512-43f4-b5e7-428e41cfc348
+      - identifier: "514bf53a-f512-43f4-b5e7-428e41cfc348"
+        workflow_job_template: "Cisco ACI: Workflow"
+        unified_job_template: "Cisco ACI: 5-query"
+        organization: "Default"
+        all_parents_must_converge: "False"
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "Azure: RHEL workflow"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "7716da9c-7e76-4500-857b-df00e55244d3"
+        workflow_job_template: "Azure: RHEL workflow"
+        unified_job_template: "Azure: RHEL Deployment"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        always_nodes:
+          - adc1b648-21df-483d-81d8-17e010814cec
+      - identifier: "adc1b648-21df-483d-81d8-17e010814cec"
+        workflow_job_template: "Azure: RHEL workflow"
+        unified_job_template: "Azure: RHEL Config"
+        organization: "Default"
+        all_parents_must_converge: "False"
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+  - name: "Databases: mysql workflow"
+    description: ""
+    organization: "Default"
+    state: "present"
+    simplified_workflow_nodes:
+      - identifier: "fc86dedf-67f0-4eb7-a4d5-508864285f1b"
+        workflow_job_template: "Databases: mysql workflow"
+        unified_job_template: "Databases: mysql create"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - 23bef8ef-be78-4fcb-9c51-9df1c99dff67
+      - identifier: "23bef8ef-be78-4fcb-9c51-9df1c99dff67"
+        workflow_job_template: "Databases: mysql workflow"
+        unified_job_template: "Databases: mysql replication"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - 489afa70-226d-435c-8d6b-b68423b77346
+      - identifier: "df1983d5-0d3d-4e71-a32d-10be6ec4f341"
+        workflow_job_template: "Databases: mysql workflow"
+        unified_job_template: "Databases: mysql backup restore"
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "489afa70-226d-435c-8d6b-b68423b77346"
+        workflow_job_template: "Databases: mysql workflow"
+        unified_job_template: "Databases: mysql sql"
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - df1983d5-0d3d-4e71-a32d-10be6ec4f341
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    webhook_service: ""
+    survey_enabled: False
+...

@@ -1,0 +1,43 @@
+---
+controller_settings:
+  - settings:
+      ACTIVITY_STREAM_ENABLED: "true"
+      ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC: "false"
+      ORG_ADMINS_CAN_SEE_ALL_USERS: "true"
+      MANAGE_ORGANIZATION_AUTH: "true"
+      TOWER_URL_BASE: "https://towerhost"
+      REMOTE_HOST_HEADERS:
+        - REMOTE_ADDR
+        - REMOTE_HOST
+      PROXY_IP_ALLOWED_LIST:
+        []
+      CSRF_TRUSTED_ORIGINS:
+        []
+      LICENSE:
+        instance_count: 15000
+        license_date: 1798779599
+        license_type: enterprise
+        pool_id: 8a85f99c7d76f2fd017d96c9f1e606bb
+        product_name: Red Hat Ansible Automation Platform
+        satellite: null
+        sku: MCT3691
+        subscription_name: Red Hat Ansible Automation Platform, Standard (15000 Managed Nodes)
+        support_level: Standard
+        valid_key: true
+      REDHAT_USERNAME: "rh-ee-cparada"
+      REDHAT_PASSWORD: "$encrypted$"
+      SUBSCRIPTIONS_USERNAME: "rh-ee-cparada"
+      SUBSCRIPTIONS_PASSWORD: "$encrypted$"
+      INSTALL_UUID: "c876104d-b252-4241-b24b-713679c64fdc"
+      DEFAULT_EXECUTION_ENVIRONMENT: "null"
+      INSIGHTS_TRACKING_STATE: "true"
+      AUTOMATION_ANALYTICS_LAST_GATHER: "2024-10-15T07:43:42.728281Z"
+      #AUTOMATION_ANALYTICS_LAST_ENTRIES: "{"config": "2024-10-15T07:43:42.728Z", "counts": "2024-10-15T07:43:42.728Z", "cred_type_counts": "2024-10-15T07:43:42.728Z", "instance_info": "2024-10-15T07:43:42.728Z", "inventory_counts": "2024-10-15T07:43:42.728Z", "org_counts": "2024-10-15T07:43:42.728Z", "projects_by_scm_type": "2024-10-15T07:43:42.728Z", "query_info": "2024-10-15T07:43:42.728Z", "events_table": "2024-10-15T07:43:42.728Z", "host_metric_table": "2024-10-15T07:43:42.728Z", "host_metric_table_full": "2024-09-21T12:13:50.998Z", "unified_job_template_table": "2024-10-15T07:43:42.728Z", "unified_jobs_table": "2024-10-15T07:43:42.728Z", "workflow_job_node_table": "2024-10-15T07:43:42.728Z", "workflow_job_template_node_table": "2024-10-15T07:43:42.728Z", "host_metric_summary_monthly_table": "2024-10-15T07:43:42.728Z"}"
+      AUTOMATION_ANALYTICS_GATHER_INTERVAL: "14400"
+      UI_NEXT: "false"
+      CLEANUP_HOST_METRICS_LAST_TS: "2024-09-19T04:23:52.725972Z"
+      HOST_METRIC_SUMMARY_TASK_LAST_TS: "2024-10-09T12:53:54.758180Z"
+      PENDO_TRACKING_STATE: "detailed"
+      AUTH_LDAP_GROUP_TYPE_PARAMS:
+        {}
+...

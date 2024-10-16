@@ -1,0 +1,212 @@
+---
+controller_hosts:
+  - name: "localhost"
+    description: ""
+    inventory: "Demo Inventory"
+    variables:
+      ansible_connection: local
+  - name: "controller34"
+    description: ""
+    inventory: "Controllers"
+    variables:
+      ansible_host: 172.16.1.34
+      ansible_python_interpreter: /usr/bin/python3
+  - name: "controller45"
+    description: ""
+    inventory: "Controllers"
+    variables:
+      ansible_host: 172.16.1.45
+      ansible_python_interpreter: /usr/bin/python3
+  - name: "aoscx-1"
+    description: ""
+    inventory: "Aruba"
+  - name: "webserver-1"
+    description: ""
+    inventory: "CentOS"
+    variables:
+      ansible_host: 172.16.2.199
+  - name: "webserver-2"
+    description: ""
+    inventory: "CentOS"
+    variables:
+      ansible_host: 172.16.2.200
+  - name: "sandboxdnac"
+    description: ""
+    inventory: "Cisco DNAC"
+    variables:
+      aci_validate_certs: false
+      ansible_connection: local
+      ansible_host: sandboxdnac.cisco.com
+      ansible_network_os: dnac
+  - name: "sandboxmeraki"
+    description: ""
+    inventory: "Cisco Meraki"
+    variables:
+      aci_validate_certs: false
+      ansible_connection: local
+      ansible_host: n149.meraki.com
+      ansible_network_os: meraki
+  - name: "controller-1"
+    description: ""
+    inventory: "Controller"
+    variables:
+      ansible_host: 172.16.1.45
+  - name: "ios-rt1"
+    description: ""
+    inventory: "Cisco/Juniper"
+    variables:
+      ansible_connection: network_cli
+      ansible_host: 172.16.2.151
+      ansible_network_os: ios
+  - name: "ios-rt2"
+    description: ""
+    inventory: "Cisco/Juniper"
+    variables:
+      ansible_connection: network_cli
+      ansible_host: 172.16.2.152
+      ansible_network_os: ios
+  - name: "ios-sw1"
+    description: ""
+    inventory: "Cisco/Juniper"
+    variables:
+      ansible_connection: network_cli
+      ansible_host: 172.16.2.153
+      ansible_network_os: ios
+  - name: "junos-1"
+    description: ""
+    inventory: "Cisco/Juniper"
+    variables:
+      ansible_connection: netconf
+      ansible_host: 172.16.2.214
+      ansible_network_os: junos
+  - name: "eos-rt1"
+    description: ""
+    inventory: "Netbox"
+    variables:
+      ansible_host: 172.16.2.154
+  - name: "ios-rt1"
+    description: ""
+    inventory: "Netbox"
+    variables:
+      ansible_host: 172.16.2.151
+  - name: "ios-rt2"
+    description: ""
+    inventory: "Netbox"
+    variables:
+      ansible_host: 172.16.2.152
+  - name: "ios-sw1"
+    description: ""
+    inventory: "Netbox"
+    variables:
+      ansible_host: 172.16.2.153
+  - name: "nxos-9k"
+    description: ""
+    inventory: "Netbox"
+    variables:
+      ansible_host: 172.16.2.162
+  - name: "asa-1"
+    description: ""
+    inventory: "EVE Firewalls"
+    variables:
+      ansible_connection: network_cli
+      ansible_host: 172.16.2.213
+      ansible_network_os: cisco.asa.asa
+      ansible_ssh_common_args: -o KexAlgorithms=+diffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa
+        -o Ciphers=+aes256-cbc
+  - name: "backup-server"
+    description: ""
+    inventory: "EVE Firewalls"
+    variables:
+      ansible_host: 172.16.2.199
+      ansible_ssh_pass: centos
+      ansible_user: root
+  - name: "checkpoint-1"
+    description: ""
+    inventory: "EVE Firewalls"
+    variables:
+      ansible_connection: httpapi
+      ansible_host: ec2-34-235-167-50.compute-1.amazonaws.com
+      ansible_httpapi_use_ssl: true
+      ansible_httpapi_validate_certs: false
+      ansible_network_os: check_point.mgmt.checkpoint
+  - name: "fortinet-1"
+    description: ""
+    inventory: "EVE Firewalls"
+    variables:
+      ansible_connection: httpapi
+      ansible_host: 172.16.2.212
+      ansible_httpapi_port: 80
+      ansible_httpapi_use_ssl: false
+      ansible_httpapi_validate_certs: false
+      ansible_network_os: fortinet.fortios.fortios
+  - name: "vpanos-1"
+    description: ""
+    inventory: "EVE Firewalls"
+    variables:
+      ansible_connection: local
+      ansible_host: 172.16.2.211
+      ansible_python_interpreter: !unsafe '{{ ansible_playbook_python }}'
+  - name: "vsrx-1"
+    description: ""
+    inventory: "EVE Firewalls"
+    variables:
+      ansible_connection: netconf
+      ansible_host: 172.16.2.210
+      ansible_network_os: junos
+      ansible_port: 22
+  - name: "controller-1"
+    description: ""
+    inventory: "Fortinet"
+    variables:
+      ansible_host: 172.16.1.45
+      controller_password: '********'
+  - name: "fortianalyzer-1"
+    description: ""
+    inventory: "Fortinet"
+    variables:
+      ansible_connection: httpapi
+      ansible_host: 172.16.2.213
+      ansible_httpapi_port: 80
+      ansible_httpapi_use_ssl: false
+      ansible_httpapi_validate_certs: false
+      ansible_network_os: fortinet.fortianalyzer.fortianalyzer
+  - name: "fortigate-1"
+    description: ""
+    inventory: "Fortinet"
+    variables:
+      ansible_connection: httpapi
+      ansible_host: 172.16.2.212
+      ansible_httpapi_port: 80
+      ansible_httpapi_use_ssl: false
+      ansible_httpapi_validate_certs: false
+      ansible_network_os: fortinet.fortios.fortios
+  - name: "fortimanager-1"
+    description: ""
+    inventory: "Fortinet"
+    variables:
+      ansible_connection: httpapi
+      ansible_host: 172.16.2.211
+      ansible_httpapi_port: 80
+      ansible_httpapi_use_ssl: false
+      ansible_httpapi_validate_certs: false
+      ansible_network_os: fortinet.fortimanager.fortimanager
+  - name: "controller-1"
+    description: ""
+    inventory: "ServiceNow-ITSM"
+    variables:
+      ansible_host: 172.16.2.45
+  - name: "webserver-1"
+    description: ""
+    inventory: "ServiceNow-ITSM"
+    variables:
+      ansible_host: 172.16.2.199
+  - name: "webserver-2"
+    description: ""
+    inventory: "ServiceNow-ITSM"
+    variables:
+      ansible_host: 172.16.2.200
+  - name: "dbserver"
+    description: ""
+    inventory: "Databases"
+    variables:
+      ansible_host: 172.16.1.45

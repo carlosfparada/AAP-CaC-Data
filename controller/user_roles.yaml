@@ -1,0 +1,35 @@
+---
+controller_roles:
+  - user: "approver"
+    workflow_job_templates:
+      - "Demo Netbox: WORKFLOW"
+    role: "approval"
+  - user: "approver"
+    organizations:
+      - "Default"
+    role: "member"
+  - user: "netbox"
+    job_templates:
+      - "Demo Netbox: 0. CLEANUP NETBOX"
+      - "Demo Netbox: 1. GET FACTS, PUSH NETBOX"
+      - "Demo Netbox: 2. QUERY NETBOX"
+    role: "read"
+  - user: "netbox"
+    workflow_job_templates:
+      - "Demo Netbox: WORKFLOW"
+    role: "read"
+  - user: "netbox"
+    job_templates:
+      - "Demo Netbox: 0. CLEANUP NETBOX"
+      - "Demo Netbox: 1. GET FACTS, PUSH NETBOX"
+      - "Demo Netbox: 2. QUERY NETBOX"
+    role: "execute"
+  - user: "netbox"
+    workflow_job_templates:
+      - "Demo Netbox: WORKFLOW"
+    role: "execute"
+  - user: "netbox"
+    organizations:
+      - "Default"
+    role: "member"
+...
