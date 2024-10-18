@@ -1,27 +1,27 @@
-# ---
-# controller_user_accounts:
-# - username: "admin"
-#   password: "INITIAL"
-#   email: "admin@example.com"
-#   first_name: ""
-#   last_name: ""
-#   auditor: "False"
-#   superuser: "True"
-#   update_secrets: false
-# - username: "approver"
-#   password: "INITIAL"
-#   email: ""
-#   first_name: "Approver"
-#   last_name: ""
-#   auditor: "False"
-#   superuser: "False"
-#   update_secrets: false
-# - username: "netbox"
-#   password: "INITIAL"
-#   email: ""
-#   first_name: "Netbox"
-#   last_name: ""
-#   auditor: "False"
-#   superuser: "False"
-#   update_secrets: false
-# ...
+---
+controller_user_accounts:
+  - username: "admin"
+    password: "INITIAL"
+    email: "admin@example.com"
+    first_name: ""
+    last_name: ""
+    auditor: "False"
+    superuser: "True"
+    update_secrets: false
+  - username: "approver"
+    password: "INITIAL"
+    email: ""
+    first_name: "Approver"
+    last_name: ""
+    auditor: "False"
+    superuser: "False"
+    update_secrets: false
+  - username: "netbox"
+    password: "INITIAL"
+    email: ""
+    first_name: "Netbox"
+    last_name: ""
+    auditor: "False"
+    superuser: "False"
+    update_secrets: false
+...
