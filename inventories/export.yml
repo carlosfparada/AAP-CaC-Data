@@ -1,0 +1,105 @@
+---
+
+- name: Extract AAP artifacts to a CaC format
+  hosts: controller-1
+  gather_facts: false
+  vars:
+    git_repository: "github.com/carlosfparada/AAP-CaC.git"
+    git_email: "cparada@redhat.com"
+    git_username: "carlosfparada"
+    controller_hostname: "{{ ansible_host }}"
+    controller_validate_certs: "false"
+    controller_username: "{{ controller_username }}"
+    controller_password: "{{ controller_password }}"
+    output_path:	/tmp/filetree_output
+    flatten_output: yes
+  tasks:
+    - name: "Get the Authentication Token for the future requests"
+      ansible.builtin.uri:
+        url: "https://{{ controller_hostname }}/api/v2/tokens/"
+        user: "{{ controller_username }}"
+        password: "{{ controller_password }}"
+        method: POST
+        force_basic_auth: true
+        validate_certs: "{{ controller_validate_certs }}"
+        status_code: 201
+      register: authtoken_res
+      no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"
+      when: controller_oauthtoken is not defined
+
+    - name: "Set the oauth token to be used since now"
+      ansible.builtin.set_fact:
+        controller_oauthtoken: "{{ authtoken_res.json.token }}"
+        controller_oauthtoken_url: "{{ authtoken_res.json.url }}"
+      no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"
+      when: controller_oauthtoken is not defined
+
+    - name: Debug (why this debug is needed)
+      ansible.builtin.debug:
+        msg: "{{ lookup('ansible.controller.controller_api', 'ping', 
+                      host=controller_hostname, oauth_token=controller_oauthtoken,
+                      verify_ssl=controller_validate_certs) }}"
+
+    - name: Generate CaC (role filetree_create)
+      ansible.builtin.import_role:
+        name: infra.controller_configuration.filetree_create
+
+    - name: "Delete the Authentication Token used"
+      ansible.builtin.uri:
+        url: "https://{{ controller_hostname }}{{ controller_oauthtoken_url }}"
+        user: "{{ controller_username }}"
+        password: "{{ controller_password }}"
+        method: DELETE
+        force_basic_auth: true
+        validate_certs: "{{ controller_validate_certs }}"
+        status_code: 204
+      when: controller_oauthtoken_url is defined
+
+    - name: Create CaC folder on server
+      ansible.builtin.file:
+        path: "/root/controller-cac"
+        state: directory
+        mode: '0755'
+
+    - name: Copy CaC to server
+      ansible.builtin.copy:
+        src: "{{ output_path }}/"
+        dest: "/root/controller-cac/"
+        remote_src: true
+      become: true
+
+    # - name: Set branch name
+    #   ansible.builtin.set_fact:
+    #     branch_name: "branch-{{ '%Y%m%dT%H%M%S' | strftime }}"
+
+    # - name: Create a repo dir
+    #   ansible.builtin.command:
+    #     cmd: "mkdir /tmp/aap-cac"
+
+    # - name: Clone a repo into dir
+    #   ansible.builtin.command:
+    #     cmd: "{{ item }}"
+    #     chdir:  "/tmp/aap-cac"
+    #   loop:
+    #     - "git config --global user.email {{ git_email }}"
+    #     - "git config --global user.name {{ git_username }}"
+    #     - "git clone https://{{ git_repository }}"
+
+    # - name: Change repo content and create a branch
+    #   ansible.builtin.command:
+    #     cmd: "{{ item }}"
+    #     chdir:  "/tmp/aap-cac/AAP-CaC"
+    #   loop:
+    #     - "ls -la {{ output_path }}/"
+    #     - "cp -r {{ output_path }}/. /tmp/aap-cac/AAP-CaC/controller/"
+    #     - "rm {{ output_path }}/credentials.yaml"
+    #     - "ls -la /tmp/aap-cac/AAP-CaC/controller/"
+    #     - "git branch \"{{ branch_name }}\""
+    #     - "git checkout \"{{ branch_name }}\""
+    #     - "git add ."
+    #     - "git commit -m \"commit {{ branch_name }}\""
+    #     - "git remote remove origin"
+    #     - "git remote add origin https://{{ authentication_token }}@{{ git_repository }}"
+    #     - "git push -u origin \"{{ branch_name }}\""
+    #     - "rm -rf /tmp/aap-cac"
+    #   ignore_errors: true

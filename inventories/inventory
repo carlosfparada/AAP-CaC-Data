@@ -1,0 +1,112 @@
+# This is the AAP enterprise installer inventory file
+# Please consult the docs if you're unsure what to add
+# For all optional variables please consult the included README.md
+# or the Red Hat documentation:
+# https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/containerized_installation
+
+# This section is for your AAP Gateway host(s)
+# -----------------------------------------------------
+[automationgateway]
+#gateway1.example.org
+#gateway2.example.org
+192.168.0.44 ansible_connection=local
+
+# This section is for your AAP Controller host(s)
+# -----------------------------------------------------
+[automationcontroller]
+#controller1.example.org
+#controller2.example.org
+192.168.0.44 ansible_connection=local
+
+# This section is for your AAP Execution host(s)
+# -----------------------------------------------------
+#[execution_nodes]
+#hop1.example.org receptor_type='hop'
+#exec1.example.org
+#exec2.example.org
+
+# This section is for your AAP Automation Hub host(s)
+# -----------------------------------------------------
+[automationhub]
+#hub1.example.org
+#hub2.example.org
+192.168.0.44 ansible_connection=local
+
+# This section is for your AAP EDA Controller host(s)
+# -----------------------------------------------------
+[automationeda]
+#eda1.example.org
+#eda2.example.org
+192.168.0.44 ansible_connection=local
+
+[database]
+192.168.0.44 ansible_connection=local
+
+#[redis]
+#gateway1.example.org
+#gateway2.example.org
+#hub1.example.org
+#hub2.example.org
+#eda1.example.org
+#eda2.example.org
+
+[all:vars]
+
+# REDIS mode
+redis_mode=standalone
+
+# Postgres admin username/password
+postgresql_admin_username=postgres
+postgresql_admin_password='Rfc1918!'
+
+# Common variables
+# https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/containerized_installation/appendix-inventory-files-vars#ref-general-inventory-variables
+# -----------------------------------------------------
+registry_username=''
+registry_password=''
+
+# AAP Gateway
+# https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/containerized_installation/appendix-inventory-files-vars#ref-gateway-variables
+# -----------------------------------------------------
+gateway_admin_password='Rfc1918!'
+gateway_pg_host=192.168.0.44
+#gateway_pg_database=<set your own>
+#gateway_pg_username=<set your own>
+gateway_pg_password='Rfc1918!'
+
+# AAP Controller
+# https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/containerized_installation/appendix-inventory-files-vars#ref-controller-variables
+# -----------------------------------------------------
+controller_admin_password='Rfc1918!'
+controller_pg_host=192.168.0.44
+#controller_pg_database=<set your own>
+#controller_pg_username=<set your own>
+controller_pg_password='Rfc1918!'
+
+
+#controller_postinstall=true
+#controller_license_file=/home/cparada/manifest_ansible-ssa_20241015T151534Z.zip
+##controller_license_file=https://github.com/carlosfparada/AAP-CaC/blob/main/manifest_ansible-ssa_20241015T151534Z.zip
+#controller_postinstall_repo_url=https://github.com/carlosfparada/AAP-CaC-Data.git
+#controller_postinstall_dir=/tmp/cac-aap2.5/
+#controller_postinstall_repo_ref=main
+#controller_postinstall_ignore_files=""
+
+# AAP Automation Hub
+# https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/containerized_installation/appendix-inventory-files-vars#ref-hub-variables
+# -----------------------------------------------------
+hub_admin_password='Rfc1918!'
+hub_pg_host=192.168.0.44
+#hub_pg_database=<set your own>
+#hub_pg_username=<set your own>
+hub_pg_password='Rfc1918!'
+
+# AAP EDA Controller
+# https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/containerized_installation/appendix-inventory-files-vars#event-driven-ansible-controller
+# -----------------------------------------------------
+eda_admin_password='Rfc1918!'
+eda_pg_host=192.168.0.44
+#eda_pg_database=<set your own>
+#eda_pg_username=<set your own>
+eda_pg_password='Rfc1918!'
+
